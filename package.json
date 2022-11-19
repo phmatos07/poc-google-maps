@@ -1,10 +1,13 @@
 {
   "name": "poc-google-maps",
-  "version": "0.0.0",
-  "license": "MIT",
+  "version": "1.0.0",
+  "license": "GNU GENERAL PUBLIC LICENSE",
+  "private": true,
+  "homepage": "https://github.com/phmatos07/poc-google-maps",
+  "description": "Prova de conceito para testar as funcionalidades da API do Google Maps.",
+  "author": "Phelipe Matos (PHMATOS07)",
   "scripts": {
     "ng": "nx",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
@@ -25,9 +28,9 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^11.2.0",
     "@angular/common": "^11.2.0",
