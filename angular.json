@@ -36,7 +36,7 @@
       "projectType": "application",
       "root": "apps/poc-google-maps",
       "sourceRoot": "apps/poc-google-maps/src",
-      "prefix": "poc-google-maps",
+      "prefix": "pgm",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
