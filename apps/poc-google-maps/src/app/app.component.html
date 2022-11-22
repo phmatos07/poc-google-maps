@@ -1,1 +1,16 @@
-<pgm-toolbar></pgm-toolbar>
+<pgm-toolbar (openSidebarEmitter)="openSidebar($event)"></pgm-toolbar>
+
+<mat-sidenav-container class="container">
+  <mat-sidenav
+    class="container__sidenav"
+    [opened]="toggleSidebar"
+    mode="side"
+    position="start"
+  >
+    <pgm-sidenav></pgm-sidenav>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="container__content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

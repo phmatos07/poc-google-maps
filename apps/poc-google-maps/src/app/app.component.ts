@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'poc-google-maps';
+
+  toggleSidebar = false;
+
+  openSidebar(isOpen: boolean): void {
+    this.toggleSidebar = isOpen;
+  }
 }
