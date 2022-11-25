@@ -27,6 +27,12 @@ export class MapMarkerComponent implements OnInit, GoogleMaps {
   }
 
   mapClick(event: google.maps.MapMouseEvent): void {
+
+    console.group('INFORMAÇÕES DO MAPA.');
+    console.info(`Latitude/Longitude: ${event.latLng.toJSON()}`);
+    console.info('Eventos:', event);
+    console.groupEnd();
+
     this.options.center = (event.latLng.toJSON());
   }
 
