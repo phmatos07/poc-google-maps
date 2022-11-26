@@ -12,10 +12,11 @@
     (mapMousemove)="mapMousemove($event)"
   >
     <map-marker
-      *ngFor="let markerPosition of markerPositions"
-      [position]="markerPosition"
-      [label]="markerPosition.label"
-      [options]="markerOptions"
+      *ngFor="let marker of markerPositions"
+      [position]="marker"
+      [label]="marker.label"
+      [title]="marker.title"
+      [options]="marker.options"
       (mapClick)="mapClick($event)"
     ></map-marker>
   </google-map>

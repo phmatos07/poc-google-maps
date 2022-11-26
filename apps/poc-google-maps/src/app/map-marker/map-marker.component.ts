@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GoogleMaps } from '../../models/google-maps';
 import { GoogleMapsOptions } from '../../models/google-maps-options';
-import { MarkerOptionsConst } from '../../models/marker-options.const';
 import { MarkerPositionsConst } from '../../models/marker-positions.const';
 import { GoogleMapsService } from '../../services/google-maps.service';
 
@@ -17,7 +16,6 @@ export class MapMarkerComponent implements OnInit, GoogleMaps {
   options?: GoogleMapsOptions;
   display?: google.maps.LatLngLiteral;
   markerPositions = MarkerPositionsConst;
-  markerOptions: google.maps.MarkerOptions = MarkerOptionsConst;
 
   constructor(private service: GoogleMapsService) { }
 
