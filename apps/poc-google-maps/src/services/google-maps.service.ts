@@ -3,7 +3,10 @@ import { Observable } from 'rxjs';
 import { GoogleApi } from '../api/google.api';
 import { GoogleMapsOptions } from '../models/google-maps-options';
 import { GoogleMapsOptionsConst } from '../models/google-maps-options.const';
-import { KEY_API_GOOGLE_MAPS } from '../models/valores-padroes.const';
+import { MarkerOptionsBuilder } from '../models/marker-options.builder';
+import { MarkerPositions } from '../models/marker-positions';
+import { DEFAULT_ICON, KEY_API_GOOGLE_MAPS, LABEL_ORIGIN } from '../models/valores-padroes.const';
+import { MarkerLabelBuilder } from './../models/marker-label.builder';
 
 @Injectable({ providedIn: 'root' })
 export class GoogleMapsService {
@@ -16,5 +19,23 @@ export class GoogleMapsService {
 
   getOptions(googleMapsOptions?: GoogleMapsOptions): GoogleMapsOptions {
     return googleMapsOptions ? googleMapsOptions : GoogleMapsOptionsConst;
+  }
+
+  setMarkerOptions(markers: MarkerPositions[], latLng: google.maps.LatLngLiteral, label: string): MarkerPositions[] {
+    return markers.map(marker => (
+      marker.lat === latLng.lat && marker.lng === latLng.lng ? {
+        ...marker,
+        label: new MarkerLabelBuilder(label).markerLabel,
+        title: label,
+        options: new MarkerOptionsBuilder(marker.options).setIcon(this.getIcon()).markerOptions
+      } : marker
+    ));
+  }
+
+  private getIcon(url?: string): google.maps.Icon {
+    return {
+      labelOrigin: LABEL_ORIGIN,
+      url: url || DEFAULT_ICON,
+    };
   }
 }
