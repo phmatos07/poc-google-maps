@@ -2,17 +2,17 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { GoogleMapsModule as GoogleMapsModuleNative } from '@angular/google-maps';
 import { RouterModule } from '@angular/router';
-import { MapMarkerRoutingModule } from './map-marker-routing.module';
-import { MapMarkerComponent } from './map-marker.component';
+import { DemonstrationRoutingModule } from './demonstration-routing.module';
+import { DemonstrationComponent } from './demonstration.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     GoogleMapsModuleNative,
-    MapMarkerRoutingModule
+    DemonstrationRoutingModule
   ],
-  exports: [MapMarkerComponent],
-  declarations: [MapMarkerComponent]
+  exports: [DemonstrationComponent],
+  declarations: [DemonstrationComponent]
 })
-export class MapMarkerModule { }
+export class DemonstrationModule { }

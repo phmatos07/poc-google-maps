@@ -7,9 +7,13 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
+    path: 'demonstration',
+    loadChildren: () => import('./demonstration/demonstration.module').then(m => m.DemonstrationModule)
+  },
+  {
     path: 'map-marker',
     loadChildren: () => import('./map-marker/map-marker.module').then(m => m.MapMarkerModule)
-  },
+  }
 ];
 
 @NgModule({
