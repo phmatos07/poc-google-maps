@@ -1,0 +1,37 @@
+<section
+  *ngIf="apiLoaded | async"
+  class="container"
+>
+  <google-map
+    class="container__maps"
+    [width]="options.width"
+    [height]="options.height"
+    [center]="options.center"
+    [zoom]="options.zoom"
+    (mapClick)="mapClick($event)"
+    (mapMousemove)="mapMousemove($event)"
+  >
+    <map-marker
+      *ngFor="let marker of markerPositions"
+      [position]="marker"
+      [label]="marker.label"
+      [title]="marker.title"
+      [options]="marker.options"
+      (mapClick)="mapClick($event)"
+    ></map-marker>
+  </google-map>
+
+  <div
+    *ngIf="display"
+    class="container__information"
+  >
+    <p>
+      <strong>Latitude:</strong> {{ display?.lat }}
+    </p>
+
+    <p>
+      <strong>Longitude:</strong> {{ display?.lng }}
+    </p>
+  </div>
+
+</section>
