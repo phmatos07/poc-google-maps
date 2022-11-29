@@ -1,0 +1,40 @@
+<section
+  *ngIf="latLngCurrent"
+  class="information"
+>
+  <h4>Posicionamento Dinâmico:</h4>
+
+  <mat-list>
+
+    <mat-list-item>
+      <mat-icon
+        matListItemIcon
+        color="primary"
+      >place
+      </mat-icon>
+      <div matListItemTitle><strong>Latitude/Longitude:</strong></div>
+      <div matListItemLine> {{ latLngCurrent.lng }}/{{ latLngCurrent.lat }}</div>
+    </mat-list-item>
+  </mat-list>
+
+  <ng-container *ngIf="positions && positions.length >= MINIMUM_AMOUNT">
+
+    <mat-divider></mat-divider>
+
+    <h4>Posicionamentos Selecionados:</h4>
+
+    <mat-list>
+
+      <mat-list-item *ngFor="let position of positions">
+        <mat-icon
+          matListItemIcon
+          color="primary"
+        >place
+        </mat-icon>
+        <div matListItemTitle><strong>Latitude/Longitude:</strong></div>
+        <div matListItemLine>{{ position.lng }}/{{ position.lat }}</div>
+      </mat-list-item>
+    </mat-list>
+  </ng-container>
+
+</section>

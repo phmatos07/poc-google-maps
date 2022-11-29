@@ -10,17 +10,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: block;
     width: 100%;
   }
-
-  &__information {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    p {
-      margin-right: 1rem;
-    }
-  }
 }
 
 .marker-label {

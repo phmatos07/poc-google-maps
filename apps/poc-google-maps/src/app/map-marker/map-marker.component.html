@@ -21,17 +21,9 @@
     ></map-marker>
   </google-map>
 
-  <div
-    *ngIf="display"
-    class="container__information"
-  >
-    <p>
-      <strong>Latitude:</strong> {{ display?.lat }}
-    </p>
-
-    <p>
-      <strong>Longitude:</strong> {{ display?.lng }}
-    </p>
-  </div>
+  <pgm-information-board
+    [latLngCurrent]="latLngCurrent"
+    [latLngClicked]="latLngClicked"
+  ></pgm-information-board>
 
 </section>

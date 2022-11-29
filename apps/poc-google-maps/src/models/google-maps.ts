@@ -4,5 +4,6 @@ import { GoogleMapsOptions } from './google-maps-options';
 export interface GoogleMaps {
   apiLoaded?: Observable<boolean>;
   options?: GoogleMapsOptions;
-  display?: google.maps.LatLngLiteral;
+  latLngCurrent?: google.maps.LatLngLiteral;
+  latLngClicked?: google.maps.LatLngLiteral;
 }
