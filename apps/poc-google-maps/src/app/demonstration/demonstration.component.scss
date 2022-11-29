@@ -1,0 +1,21 @@
+$outer-spacing: 1rem;
+
+.form-maps-config {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__field {
+    margin-right: $outer-spacing;
+
+    &--spacing {
+      margin-right: $outer-spacing;
+    }
+
+    &--flex {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+}
