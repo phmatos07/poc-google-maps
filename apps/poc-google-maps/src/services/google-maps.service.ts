@@ -32,6 +32,13 @@ export class GoogleMapsService {
     ));
   }
 
+  console(event: google.maps.MapMouseEvent): void {
+    console.group('INFORMAÇÕES DO MAPA.');
+    console.info('Latitude/Longitude:', event.latLng.toJSON());
+    console.info('Eventos:', event);
+    console.groupEnd();
+  }
+
   private getIcon(url?: string): google.maps.Icon {
     return {
       labelOrigin: LABEL_ORIGIN,
