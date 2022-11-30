@@ -1,21 +1,18 @@
-$outer-spacing: 1rem;
+$outer-spacing: 1.5rem;
 
 .form-maps-config {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  &__field-groups {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 
-  &__field {
-    margin-right: $outer-spacing;
+    &--flex {
+      display: inline-grid;
+      grid-template-columns: 100%;
+    }
 
     &--spacing {
       margin-right: $outer-spacing;
-    }
-
-    &--flex {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
     }
   }
 }
