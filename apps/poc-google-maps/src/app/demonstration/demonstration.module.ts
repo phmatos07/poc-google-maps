@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { DemonstrationRoutingModule } from './demonstration-routing.module';
 import { DemonstrationComponent } from './demonstration.component';
+import { DemonstrationService } from './demonstration.service';
 
 @NgModule({
   imports: [
@@ -16,9 +17,10 @@ import { DemonstrationComponent } from './demonstration.component';
     MatInputModule,
     MatIconModule,
     GoogleMapsModuleNative,
-    DemonstrationRoutingModule,
+    DemonstrationRoutingModule
   ],
   exports: [DemonstrationComponent],
-  declarations: [DemonstrationComponent]
+  declarations: [DemonstrationComponent],
+  providers: [DemonstrationService]
 })
 export class DemonstrationModule { }
