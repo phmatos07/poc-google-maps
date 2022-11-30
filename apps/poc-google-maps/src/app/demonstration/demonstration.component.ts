@@ -42,7 +42,7 @@ export class DemonstrationComponent implements OnInit, OnDestroy {
 
   mapClick(event: google.maps.MapMouseEvent): void {
     this.googleMapsService.console(event);
-    this.options = { ...this.options, center: (event.latLng.toJSON()) };
+    this.centerMap((event.latLng.toJSON()));
     this.markerPositions = this.googleMapsService.setMarkerOptions(this.markerPositions, event.latLng.toJSON(), 'Teste');
   }
 
@@ -60,10 +60,14 @@ export class DemonstrationComponent implements OnInit, OnDestroy {
   private getFormData(): void {
     if (this.formMapsConfig) {
       this.subscriptionForm = this.formMapsConfig.valueChanges
-        .subscribe((fields: FormFields) => {
-          this.options = this.service.getMapsOptions(fields);
-          console.log(fields);
-        });
+        .subscribe((fields: FormFields) => this.options = this.service.getMapsOptions(fields));
+    }
+  }
+
+  private centerMap(center: { lat: number, lng: number }): void {
+    if (this.formMapsConfig) {
+      this.options = { ...this.options, center };
+      this.formMapsConfig.patchValue({ lat: center.lat, lng: center.lng });
     }
   }
 }
