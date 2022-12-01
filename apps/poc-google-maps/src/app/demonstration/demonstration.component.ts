@@ -53,6 +53,7 @@ export class DemonstrationComponent implements OnInit, OnDestroy {
       lat: [GoogleMapsOptionsConst.center.lat],
       lng: [GoogleMapsOptionsConst.center.lng],
       zoom: [GoogleMapsOptionsConst.zoom],
+      isCenter: [true]
     });
     this.getFormData();
   }
@@ -65,7 +66,10 @@ export class DemonstrationComponent implements OnInit, OnDestroy {
   }
 
   private centerMap(center: { lat: number, lng: number }): void {
-    if (this.formMapsConfig) {
+
+    const IS_CENTER = this.formMapsConfig?.get('isCenter')?.value;
+
+    if (IS_CENTER && this.formMapsConfig) {
       this.options = { ...this.options, center };
       this.formMapsConfig.patchValue({ lat: center.lat, lng: center.lng });
     }
