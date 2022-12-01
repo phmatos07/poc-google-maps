@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'poc-google-maps-root',
+  selector: 'pgm-google-maps-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
