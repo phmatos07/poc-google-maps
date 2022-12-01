@@ -3,4 +3,5 @@ export interface GoogleMapsOptions {
   height?: string;
   center?: { lat: number, lng: number };
   zoom?: number;
+  mapTypeId?: google.maps.MapTypeId;
 }

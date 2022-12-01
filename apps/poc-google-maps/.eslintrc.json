@@ -22,7 +22,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "poc-google-maps",
+            "prefix": "pgm",
             "style": "kebab-case"
           }
         ]

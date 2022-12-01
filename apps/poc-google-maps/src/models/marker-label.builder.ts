@@ -2,7 +2,7 @@ import { MarkerLabel } from "./marker-label.const";
 
 export class MarkerLabelBuilder {
 
-  markerLabel?: google.maps.MarkerLabel;
+  markerLabel!: google.maps.MarkerLabel;
 
   constructor(markerLabel: string | google.maps.MarkerLabel) {
 

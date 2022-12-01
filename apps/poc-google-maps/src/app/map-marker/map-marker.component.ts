@@ -14,8 +14,9 @@ export class MapMarkerComponent implements OnInit, GoogleMaps {
 
   apiLoaded?: Observable<boolean>;
   options?: GoogleMapsOptions;
-  display?: google.maps.LatLngLiteral;
   markerPositions = MarkerPositionsConst;
+  latLngCurrent?: google.maps.LatLngLiteral;
+  latLngClicked?: google.maps.LatLngLiteral;
 
   constructor(private service: GoogleMapsService) { }
 
@@ -25,17 +26,13 @@ export class MapMarkerComponent implements OnInit, GoogleMaps {
   }
 
   mapClick(event: google.maps.MapMouseEvent): void {
-
-    console.group('INFORMAÇÕES DO MAPA.');
-    console.info('Latitude/Longitude:', event.latLng.toJSON());
-    console.info('Eventos:', event);
-    console.groupEnd();
-
-    this.options.center = (event.latLng.toJSON());
-    this.markerPositions = this.service.setMarkerOptions(this.markerPositions, event.latLng.toJSON(), 'Teste');
+    this.service.console(event);
+    this.options = { ...this.options, center: (event.latLng.toJSON()) };
+    this.markerPositions = this.service.setMarkerPosition(this.markerPositions, event.latLng.toJSON(), 'Teste');
+    this.latLngClicked = event.latLng.toJSON();
   }
 
   mapMousemove(event: google.maps.MapMouseEvent): void {
-    this.display = event.latLng.toJSON();
+    this.latLngCurrent = event.latLng.toJSON();
   }
 }

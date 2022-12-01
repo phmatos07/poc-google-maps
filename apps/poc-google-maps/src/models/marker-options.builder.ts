@@ -3,7 +3,7 @@ import { MarkerOptionsConst } from "./marker-options.const";
 
 export class MarkerOptionsBuilder {
 
-  markerOptions?: google.maps.MarkerOptions;
+  markerOptions!: google.maps.MarkerOptions;
 
   constructor(markerOptions?: google.maps.MarkerOptions) {
 
@@ -112,7 +112,7 @@ export class MarkerOptionsBuilder {
     return this;
   }
 
-  private validateIsObject(markerLabel: google.maps.MarkerOptions): markerLabel is google.maps.MarkerOptions {
+  private validateIsObject(markerLabel?: google.maps.MarkerOptions): markerLabel is google.maps.MarkerOptions {
     return typeof markerLabel === 'object';
   }
 }
