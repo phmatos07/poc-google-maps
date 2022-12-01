@@ -97,6 +97,23 @@
       </mat-form-field>
     </div>
 
-  </div>
+    <div class="form-maps-config__field-groups--flex">
 
+      <h4>Tipos de Mapa:</h4>
+
+      <mat-radio-group
+        class="form-maps-config__radio-group"
+        formControlName="mapType"
+      >
+        <mat-radio-button
+          *ngFor="let map of typesMaps"
+          [value]="map.value"
+          class="form-maps-config__radio-button"
+        >
+          {{ map.label }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+  </div>
 </form>

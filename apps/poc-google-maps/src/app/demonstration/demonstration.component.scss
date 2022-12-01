@@ -15,4 +15,14 @@ $outer-spacing: 1.5rem;
       margin-right: $outer-spacing;
     }
   }
+
+  &__radio-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__radio-button {
+    margin-bottom: $outer-spacing;
+  }
 }

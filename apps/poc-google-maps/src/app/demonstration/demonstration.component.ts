@@ -19,6 +19,7 @@ export class DemonstrationComponent implements OnInit, OnDestroy {
   options?: GoogleMapsOptions;
   markerPositions = MarkerPositionsConst;
   formMapsConfig?: AbstractControl;
+  typesMaps?: Array<{ label: string, value: string }>
 
   private subscriptionForm?: Subscription;
 
@@ -53,15 +54,22 @@ export class DemonstrationComponent implements OnInit, OnDestroy {
       lat: [GoogleMapsOptionsConst.center.lat],
       lng: [GoogleMapsOptionsConst.center.lng],
       zoom: [GoogleMapsOptionsConst.zoom],
-      isCenter: [true]
+      isCenter: [true],
+      mapType: [GoogleMapsOptionsConst.mapTypeId]
     });
+    this.typesMaps = this.service.getTypesMaps();
     this.getFormData();
   }
 
   private getFormData(): void {
     if (this.formMapsConfig) {
       this.subscriptionForm = this.formMapsConfig.valueChanges
-        .subscribe((fields: FormFields) => this.options = this.service.getMapsOptions(fields));
+        .subscribe((fields: FormFields) => {
+
+          console.log(fields);
+
+          this.options = this.service.getMapsOptions(fields)
+        });
     }
   }
 

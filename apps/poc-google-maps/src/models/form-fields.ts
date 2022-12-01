@@ -4,4 +4,5 @@ export interface FormFields {
   lat: number;
   lng: number;
   zoom: number;
+  mapType: google.maps.MapTypeId;
 }
