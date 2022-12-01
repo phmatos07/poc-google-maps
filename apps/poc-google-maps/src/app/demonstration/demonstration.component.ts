@@ -43,7 +43,7 @@ export class DemonstrationComponent implements OnInit, OnDestroy {
   mapClick(event: google.maps.MapMouseEvent): void {
     this.googleMapsService.console(event);
     this.centerMap((event.latLng.toJSON()));
-    this.markerPositions = this.googleMapsService.setMarkerOptions(this.markerPositions, event.latLng.toJSON(), 'Teste');
+    this.markerPositions = this.googleMapsService.setMarkerPosition(this.markerPositions, event.latLng.toJSON(), 'Teste');
   }
 
   private createForm(): void {

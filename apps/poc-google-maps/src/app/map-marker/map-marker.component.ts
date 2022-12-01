@@ -28,7 +28,7 @@ export class MapMarkerComponent implements OnInit, GoogleMaps {
   mapClick(event: google.maps.MapMouseEvent): void {
     this.service.console(event);
     this.options = { ...this.options, center: (event.latLng.toJSON()) };
-    this.markerPositions = this.service.setMarkerOptions(this.markerPositions, event.latLng.toJSON(), 'Teste');
+    this.markerPositions = this.service.setMarkerPosition(this.markerPositions, event.latLng.toJSON(), 'Teste');
     this.latLngClicked = event.latLng.toJSON();
   }
 
