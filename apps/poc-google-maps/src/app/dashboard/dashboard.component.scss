@@ -1,0 +1,12 @@
+$outer-spacing: 1.5rem;
+
+.card-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+
+  &__card {
+    max-width: 400px;
+    margin-left: $outer-spacing;
+  }
+}
