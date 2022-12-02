@@ -1,5 +1,5 @@
 import { CursorEnum } from "./cursor.enum";
-import { DEFAULT_ICON } from "./valores-padroes.const";
+import { DEFAULT_ICON } from "./default-setting.const";
 
 export const MarkerOptionsConst: google.maps.MarkerOptions = {
 

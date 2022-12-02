@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { APPLICATION_NAME } from '../../models/valores-padroes.const';
+import { APPLICATION_NAME } from '../../models/default-setting.const';
 
 @Component({
   selector: 'pgm-toolbar',
