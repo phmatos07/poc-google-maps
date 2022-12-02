@@ -1,105 +1,107 @@
+# POC - Google Maps
 
+Essa prova de conceito foi desenvolvida para explorar as funcionalidades da API do **Google Maps**, ao longo da documentação teremos um breve descritivo da instalação e configuração, além de como executá-la e tirar o máximo proveito:
 
-# PocGoogleMaps
+Segue um índice para acessar os principais tópicos:
+* [Instalação](#instalacao) 
+* [Configuração](#configuracao) 
+* [Execução](#execucao) 
+* [Referências](#referencias) 
 
-This project was generated using [Nx](https://nx.dev).
+## <a id="instalacao"></a> Instalação
+### @angular/google-maps
+Para instalar execute o comando abaixo no terminal:
+~~~npm
+npm install @angular/google-maps
+~~~
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+**Nota:** Lembre-se de definir a mesma versão do Angular que você estiver usando no projeto, caso contrário poderá dar conflito.
 
-🔎 **Powerful, Extensible Dev Tools**
+### @types/googlemaps
+Outra instalação importante é a biblioteca responsável pela tipagem dos modelos e classes do **Google Maps**:
 
-## Quick Start & Documentation
+~~~~npm
+npm install @types/googlemaps --save-dev
+~~~~
 
-[Nx Documentation](https://nx.dev/angular)
+&nbsp;
+## <a id="configuracao"></a> Configuração
+Boa parte da configuração é explicada na própria documentação do [Google Maps](https://github.com/angular/components/tree/main/src/google-maps), mas ao decorrer do desenvolvimento foi necessário configurar os **types** no arquivo *tsconfig.app.json* da pasta **apps**.
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+**Acesse apps/nome-do-projeto/tsconfig.app.json e adicione a configuração abaixo:**
+~~~~json
+"compilerOptions": {
+    ...,
+    "types": [
+         "googlemaps"
+    ],
+    ...,
+},
+~~~~
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+Provavelmente seu arquivo ficará semelhante ao **json** abaixo:
+~~~~json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": [
+      "googlemaps"
+    ]
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ]
+}
+~~~~
 
-## Adding capabilities to your workspace
+Outro arquivo que necessita de uma atenção previa é o *default-setting.const.ts* da pasta **models**, nesse arquivo você precisará definir algumas configurações padrões, mas o mais importante é definir a **chave** do projeto que foi gerada no **Google Clouds**.
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+~~~~ts
+export const APPLICATION_NAME = 'POC - Google Maps';
+export const KEY_API_GOOGLE_MAPS = 'AIzasfArrOhUnFsfsfwwV1yCmXgnXfwFsf1WvcwM-ME';
+export const DEFAULT_ICON = './../../assets/store.svg';
+export const LABEL_ORIGIN = { x: 10, y: 35 } as google.maps.Point;
+~~~~
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+**Nota:** Lembre-se, sem essa chave a **API** do **Google Maps** não funcionará.
 
-Below are our core plugins:
+&nbsp;
+## <a id="execucao"></a> Execução
+A execução do projeto é bem simples, bastar usar o comando abaixo no terminal:
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+~~~npm
+npm start
+~~~
+Ou se preferir:
+~~~a
+ng server
+~~~
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+### Visualizando a Aplicação:
 
-## Generate an application
+Após a execução do projeto acesse a **URL** padrão do Angular (http://localhost:4200), ao carregar a página inicial você verá a tela do **Dashboard** da aplicação:
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+![Dashboard da Aplicação](images/dashboard.jpg)
 
-> You can use any of the plugins above to generate applications as well.
+Acessando o menu lateral você terá acesso aos módulos da aplicação, clique em **Demonstration** para visualizar a primeira tela de exemplo da API do **Google Maps**:
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+![Demonstração](images/demonstration.jpg)
 
-## Generate a library
+&nbsp;
+## <a id="referencias"></a> Referências
+Nesse projeto estamos usando a biblioteca do **Google** para componentes Angular, com base nesse ponto usei a própria documentação estabelecida no **GitHub**, segue os principais tópicos:
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+### Github:
+* [Google Maps](https://github.com/angular/components/tree/main/src/google-maps)
+* [Google Map](https://github.com/angular/components/tree/main/src/google-maps/google-map)
+* [Map Marker](https://github.com/angular/components/tree/main/src/google-maps/map-marker)
 
-> You can also use any of the plugins above to generate libraries as well.
+### Developers Google:
+Segue a também a documentação oficial do **Google Maps**:
 
-Libraries are shareable across libraries and applications. They can be imported from `@poc-google-maps/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+* [Google Maps](https://developers.google.com/maps/documentation)
+* [Primeiros Passos](https://developers.google.com/maps/get-started)
+* [Classe/google.maps.Map](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions)
+* [Markers Icons](https://developers.google.com/maps/documentation/javascript/examples/icon-simple)

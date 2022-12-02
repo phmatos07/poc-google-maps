@@ -1,0 +1,119 @@
+<section
+  *ngIf="apiLoaded | async"
+  class="container"
+>
+  <google-map
+    class="container__maps"
+    [width]="options.width"
+    [height]="options.height"
+    [center]="options.center"
+    [zoom]="options.zoom"
+    [mapTypeId]="options.mapTypeId"
+    (mapClick)="mapClick($event)"
+  >
+    <map-marker
+      *ngFor="let marker of markerPositions"
+      [position]="marker"
+      [label]="marker.label"
+      [title]="marker.title"
+      [options]="marker.options"
+      (mapClick)="mapClick($event)"
+    ></map-marker>
+  </google-map>
+
+</section>
+
+<form
+  *ngIf="formMapsConfig"
+  class="form-maps-config"
+  [formGroup]="formMapsConfig"
+>
+  <div class="form-maps-config__field-groups">
+
+    <div class="form-maps-config__field-groups--flex">
+
+      <h4>Tamanho do Quadro:</h4>
+
+      <mat-form-field class="form-maps-config__field-groups--spacing">
+        <mat-label>Width:</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="width"
+        >
+      </mat-form-field>
+
+      <mat-form-field class="form-maps-config__field-groups--spacing">
+        <mat-label>Height:</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="height"
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="form-maps-config__field-groups--flex">
+
+      <h4>Centralizar Mapa:</h4>
+
+      <mat-form-field class="form-maps-config__field-groups--spacing">
+        <mat-label>Latitude:</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="lat"
+        >
+      </mat-form-field>
+
+      <mat-form-field class="form-maps-config__field-groups--spacing">
+        <mat-label>Longitude:</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="lng"
+        >
+      </mat-form-field>
+
+      <div class="form-maps-config__field-groups--spacing">
+        <mat-label>Ativar: </mat-label>
+        <mat-slide-toggle formControlName="isCenter"></mat-slide-toggle>
+      </div>
+    </div>
+
+    <div class="form-maps-config__field-groups--flex">
+
+      <h4>Zoom do Mapa:</h4>
+
+      <mat-form-field class="form-maps-config__field-groups--spacing">
+        <mat-label>Zoom:</mat-label>
+        <input
+          matInput
+          type="number"
+          min="0"
+          max="22"
+          formControlName="zoom"
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="form-maps-config__field-groups--flex">
+
+      <h4>Tipos de Mapa:</h4>
+
+      <mat-radio-group
+        class="form-maps-config__radio-group"
+        formControlName="mapType"
+      >
+        <mat-radio-button
+          *ngFor="let map of typesMaps"
+          [value]="map.value"
+          class="form-maps-config__radio-button"
+        >
+          {{ map.label }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+  </div>
+</form>
