@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GoogleApi } from '../api/google.api';
+import { DEFAULT_ICON, KEY_API_GOOGLE_MAPS, LABEL_ORIGIN } from '../models/default-setting.const';
 import { GoogleMapsOptions } from '../models/google-maps-options';
 import { GoogleMapsOptionsConst } from '../models/google-maps-options.const';
 import { MarkerOptionsBuilder } from '../models/marker-options.builder';
 import { MarkerOptionsConst } from '../models/marker-options.const';
 import { MarkerPositions } from '../models/marker-positions';
-import { DEFAULT_ICON, KEY_API_GOOGLE_MAPS, LABEL_ORIGIN } from '../models/valores-padroes.const';
 import { MarkerLabelBuilder } from './../models/marker-label.builder';
 
 @Injectable({ providedIn: 'root' })
