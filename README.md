@@ -1,6 +1,6 @@
 # POC - Google Maps
 
-Essa prova de conceito foi desenvolvida para explorar as funcionalidades da API do **Google Maps**, ao longo da documentação teremos um breve descritivo da instalação e configuração, além de como executá-la e tirar o máximo proveito:
+Essa prova de conceito foi desenvolvida para explorar as funcionalidades da API do **Google Maps**, ao longo da documentação teremos um breve descritivo da instalação e configuração, além de como executá-la e tirar o máximo proveito.
 
 Segue um índice para acessar os principais tópicos:
 * [Instalação](#instalacao) 
