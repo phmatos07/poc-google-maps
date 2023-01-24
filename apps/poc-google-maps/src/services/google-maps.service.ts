@@ -25,7 +25,7 @@ export class GoogleMapsService {
   console(event: google.maps.MapMouseEvent): void {
     console.group('INFORMAÇÕES DO MAPA.');
     console.log('Latitude/Longitude:', event.latLng.toJSON());
-    console.log('Eventos:',  event);
+    console.log('Eventos:', event);
     console.groupEnd();
   }
 
