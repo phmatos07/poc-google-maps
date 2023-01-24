@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
+import { DOES_NOT_SUPPORT_GEOLOCATION } from '../../models/error-messages.const';
 import { FormFields } from '../../models/form-fields';
 import { GoogleMapsOptions } from '../../models/google-maps-options';
 import { MarkerPositionsConst } from '../../models/marker-positions.const';
@@ -31,7 +32,7 @@ export class DemonstrationComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.apiLoaded = this.googleMapsService.jsonp();
-    this.options = this.googleMapsService.getOptions();
+    this.getCurrentPosition();
     this.createForm();
   }
 
@@ -45,6 +46,23 @@ export class DemonstrationComponent implements OnInit, OnDestroy {
     this.googleMapsService.console(event);
     this.centerMap((event.latLng.toJSON()));
     this.markerPositions = this.googleMapsService.setMarkerPosition(this.markerPositions, event.latLng.toJSON(), 'Teste');
+  }
+
+  private getCurrentPosition(googleMapsOptions?: GoogleMapsOptions): void {
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.options = {
+          ...this.googleMapsService.getOptions(), center: {
+            lat: position.coords.latitude, lng: position.coords.longitude
+          }
+        };
+      });
+    } else {
+      console.group('GEOLOCATION');
+      console.warn(DOES_NOT_SUPPORT_GEOLOCATION);
+      console.groupEnd();
+    }
   }
 
   private createForm(): void {
